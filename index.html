@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lightning Energy | The Power Starts With You</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #1E1E1E;
+      color: #FFFFFF;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid rgba(0, 234, 211, 0.15);
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #FFFFFF;
+    }
+
+    .logo span { color: #00EAD3; }
+
+    nav a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      padding: 0.6rem 1.4rem;
+      border: 2px solid #00EAD3;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav a:hover { background: #00EAD3; color: #1E1E1E; }
+
+    /* HERO */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0, 234, 211, 0.12) 0%, transparent 65%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '⚡';
+      position: absolute;
+      font-size: 28rem;
+      opacity: 0.03;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #00EAD3;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span { color: #00EAD3; }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: rgba(255, 255, 255, 0.65);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #00EAD3;
+      color: #1E1E1E;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .cta-btn:hover { background: #00c9b5; transform: translateY(-2px); }
+
+    /* SERVICES */
+    .services {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #00EAD3;
+      margin-bottom: 1rem;
+    }
+
+    .services h2 {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 3.5rem;
+      text-transform: uppercase;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 234, 211, 0.15);
+      border-radius: 8px;
+      padding: 2rem 1.75rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .service-card:hover {
+      border-color: #00EAD3;
+      background: rgba(0, 234, 211, 0.06);
+    }
+
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.6rem;
+      color: #FFFFFF;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.6;
+    }
+
+    /* CTA BAND */
+    .cta-band {
+      background: #00EAD3;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: #1E1E1E;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-band p {
+      font-size: 1rem;
+      color: rgba(30, 30, 30, 0.7);
+      margin-bottom: 2rem;
+    }
+
+    .cta-btn-dark {
+      display: inline-block;
+      background: #1E1E1E;
+      color: #00EAD3;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.5rem;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .cta-btn-dark:hover { background: #2d2d2d; transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: #1E1E1E;
+      border-top: 1px solid rgba(0, 234, 211, 0.12);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.3px;
+    }
+
+    footer span { color: #00EAD3; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.25rem; }
+      .services { padding: 4rem 1.25rem; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Lightning<span>⚡</span>Energy</div>
+    <a href="#quote">Get a Quote</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Australian Solar &amp; Energy</p>
+    <h1>Own Your<br><span>Power</span></h1>
+    <p class="hero-tagline">The power starts with you.</p>
+    <a class="cta-btn" href="#quote">Get Your Free Quote</a>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <p class="section-label">What We Do</p>
+    <h2>Built for the Bold</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">☀️</div>
+        <h3>Solar</h3>
+        <p>High-performance solar panels designed for Australian conditions. Slash your bills and own your energy from day one.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔋</div>
+        <h3>Batteries</h3>
+        <p>Store what you generate. Our battery systems keep the lights on after sundown and during grid outages.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">♨️</div>
+        <h3>Heat Pumps</h3>
+        <p>Efficient, electric hot water and heating. Pair with solar to run your home on clean energy year-round.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔌</div>
+        <h3>EV Chargers</h3>
+        <p>Charge your vehicle at home with solar power. Fast, smart EV charging installed by our certified team.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band" id="quote">
+    <h2>Ready to Own It?</h2>
+    <p>No pressure. Just a free, no-obligation quote tailored to your home.</p>
+    <a class="cta-btn-dark" href="mailto:hello@lightningenergy.com.au">Get Your Free Quote</a>
+  </section>
+
+  <footer>
+    <p>© 2026 <span>Lightning Energy</span> | Melbourne, Australia</p>
+  </footer>
+
+</body>
+</html>
